@@ -1,0 +1,27 @@
+{
+  "name": "bebesgrillchill",
+  "version": "1.0.0",
+  "description": "bebes grill & chill website",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixorwari/bebesgrillchill.git"
+  },
+  "keywords": [
+    "bebes",
+    "grill",
+    "chill",
+    "restaurant",
+    "accommodation",
+    "lounge"
+  ],
+  "author": "bebesgrill&chill",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/felixorwari/bebesgrillchill/issues"
+  },
+  "homepage": "https://github.com/felixorwari/bebesgrillchill#readme"
+}

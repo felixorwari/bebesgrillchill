@@ -53,6 +53,10 @@
     ></script>
 
     <style>
+      [hidden],
+      [x-cloak] {
+        display: none !important;
+      }
       button:disabled {
         cursor: not-allowed;
         opacity: 0.5;
@@ -358,12 +362,29 @@
 
           <div>
             <form
-              action="/contact"
+              id="contact-form"
+              action="https://api.web3forms.com/submit"
               method="POST"
               class="w-full mx-auto"
               x-data="contactForm()"
               @submit.prevent="submitData"
             >
+              <input
+                type="hidden"
+                name="access_key"
+                x-model="formData.access_key"
+              />
+
+              <input type="hidden" name="subject" x-model="formData.subject" />
+
+              <input
+                type="checkbox"
+                name="botcheck"
+                x-model="formData.botcheck"
+                id=""
+                style="display: none"
+              />
+
               <div class="mb-4">
                 <label
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -421,7 +442,7 @@
                 :disabled="loading"
               ></button>
 
-              <p x-text="message"></p>
+              <p x-text="message" class="mt-4"></p>
             </form>
           </div>
         </div>
@@ -471,6 +492,9 @@
             name: "",
             email: "",
             message: "",
+            botcheck: "",
+            subject: "New Submission from Web3Forms",
+            access_key: "8215334a-bf7a-458e-b4a8-66f6514eedf2",
           },
           message: "",
 
@@ -482,18 +506,29 @@
             this.loading = true;
             this.message = "";
 
-            fetch("/contact", {
+            fetch("https://api.web3forms.com/submit", {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
               body: JSON.stringify(this.formData),
             })
-              .then(() => {
-                this.message = "Form sucessfully submitted!";
+              .then(async (response) => {
+                const result = await response.json();
+                if (result.status == 200) {
+                  this.message = result.message;
+                } else {
+                  console.log(result);
+                  this.message = result.message;
+                }
               })
-              .catch(() => {
+              .catch((error) => {
+                console.log(error);
                 this.message = "Ooops! Something went wrong!";
               })
               .finally(() => {
+                document.getElementById("contact-form").reset();
                 this.loading = false;
                 this.buttonLabel = "Send Message";
               });

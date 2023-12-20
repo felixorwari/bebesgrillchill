@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,28 +39,55 @@
       src="https://kit.fontawesome.com/c5314f6096.js"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <style>
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    </style>
   </head>
 
   <body class="divide-y">
-    <nav class="bg-white border-gray-200 dark:bg-gray-900 stick top-0">
+    <nav
+      x-data="{ open: false, toggle(){this.open = !this.open;} }"
+      class="bg-white/95 backdrop-blur-sm border-b border-gray-200 dark:bg-gray-900 sticky top-0"
+    >
       <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
         <!-- Logo -->
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="https://placehold.co/50x50?text=No\nImage" alt="Logo" />
+          <img class="w-[50px] h-auto" src="./img/logo.png" alt="Logo" />
           <span
-            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+            class="self-center hidden sm:flex text-2xl font-semibold whitespace-nowrap dark:text-white"
             >Bebe's Grill & Chill</span
           >
         </a>
 
-        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button
-            type="button"
+        <div
+          class="flex ml-auto md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
+        >
+          <a
+            href="#contact-us"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Book space
-          </button>
+            Make a Booking
+          </a>
+
+          <!-- Navbar Toggle -->
           <button
+            @click="toggle"
             data-collapse-toggle="navbar-sticky"
             type="button"
             class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -87,16 +114,19 @@
         </div>
 
         <div
-          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 md:mr-auto md:ml-12"
-          id="navbar-default"
+          x-show="open"
+          x-collapse
+          @click.outside="toggle"
+          class="items-center justify-between w-full md:!flex md:!w-auto md:!h-full md:order-1 md:mr-auto md:ml-12"
+          id="navbar-sticky"
         >
           <ul
-            class="font-semibold flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-10 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+            class="font-semibold flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-10 rtl:space-x-reverse md:mt-0"
           >
             <li>
               <a
                 href="#"
-                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 aria-current="page"
                 >Home</a
               >
@@ -110,7 +140,7 @@
             </li>
             <li>
               <a
-                href="#contact"
+                href="#contact-us"
                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >Contact Us</a
               >
@@ -121,7 +151,7 @@
     </nav>
 
     <section
-      class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply"
+      class="bg-center bg-no-repeat bg-[url('/img/mishikaki.jpg')] bg-gray-700 bg-blend-multiply"
     >
       <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
         <h1
@@ -140,7 +170,7 @@
           class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0"
         >
           <a
-            href="#contact"
+            href="#contact-us"
             class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
           >
             Make a booking
@@ -175,80 +205,226 @@
     <!-- Restaurant -->
     <section id="restaurant" class="h-full w-full py-16">
       <div class="max-w-screen-xl mx-auto p-4">
-        <h2 class="font-semibold text-center mb-12 text-2xl md:text-4xl">
-          Restaurant
-        </h2>
+        <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
+          <div class="flex flex-col justify-center prose py-12">
+            <h2 class="font-semibold mb-12 text-2xl md:text-4xl">Restaurant</h2>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-          sint expedita incidunt iusto asperiores. Explicabo veniam, vel
-          expedita amet accusamus harum magnam cupiditate assumenda consectetur
-          ducimus, quaerat provident dolorum dicta.
-        </p>
+            <div
+              class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+            ></div>
+
+            <p class="text-lg mb-6">
+              Treat your taste buds to mouthwatering dishes prepared with fresh,
+              locally-sourced ingredients. From breakfast to dinner, our menu
+              features a diverse selection of cuisine, as well as signature
+              specialties to satisfy every palate.
+            </p>
+
+            <p class="text-lg mb-6">
+              Whether you're in the mood for a light snack or a hearty meal, we
+              have something for everyone. Join us for a dining experience that
+              combines taste, ambiance, and exceptional service.
+            </p>
+          </div>
+          <div class="">
+            <img
+              class="rounded-lg mx-auto"
+              src="./img/ugali-beef-choma.jpg"
+              alt="Beef choma & Ugali"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Lounge -->
     <section id="lounge" class="h-full w-full py-16">
       <div class="max-w-screen-xl mx-auto p-4">
-        <h2 class="font-semibold text-center mb-12 text-2xl md:text-4xl">
-          Lounge
-        </h2>
+        <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
+          <div class="md:order-2 flex flex-col justify-center prose py-12">
+            <h2 class="font-semibold mb-12 text-2xl md:text-4xl">Lounge</h2>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-          sint expedita incidunt iusto asperiores. Explicabo veniam, vel
-          expedita amet accusamus harum magnam cupiditate assumenda consectetur
-          ducimus, quaerat provident dolorum dicta.
-        </p>
+            <div
+              class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+            ></div>
+
+            <p class="text-lg mb-6">
+              Unwind and socialize in our chic lounge area. Whether you're
+              meeting friends for drinks or seeking a cozy spot to relax, our
+              lounge provides the perfect atmosphere. Indulge in signature
+              cocktails, fine wines, and a selection of appetizers, all while
+              enjoying the vibrant ambiance that defines Bebe's Grill & Chill.
+            </p>
+          </div>
+          <div class="md:order-1">
+            <img
+              class="rounded-lg mx-auto"
+              src="./img/lounge.jpeg"
+              alt="Lounge"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Accommodation -->
     <section id="accommodation" class="h-full w-full py-16">
       <div class="max-w-screen-xl mx-auto p-4">
-        <h2 class="font-semibold text-center mb-12 text-2xl md:text-4xl">
-          Accommodation
-        </h2>
+        <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
+          <div class="flex flex-col justify-center prose py-12">
+            <h2 class="font-semibold mb-12 text-2xl md:text-4xl">
+              Accommodation
+            </h2>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-          sint expedita incidunt iusto asperiores. Explicabo veniam, vel
-          expedita amet accusamus harum magnam cupiditate assumenda consectetur
-          ducimus, quaerat provident dolorum dicta.
-        </p>
+            <div
+              class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+            ></div>
+
+            <p class="text-lg mb-6">
+              Indulge in comfort and style with our exceptional accommodation
+              options. Whether you're here for a weekend getaway or an extended
+              stay, our well-appointed rooms are designed to provide a relaxing
+              retreat.
+            </p>
+
+            <p class="text-lg mb-6">
+              Enjoy modern amenities, personalized service, and a
+              home-away-from-home atmosphere that sets Bebe's Grill & Chill
+              apart.
+            </p>
+          </div>
+          <div class="">
+            <img
+              class="rounded-lg mx-auto"
+              src="./img/accommodation.jpeg"
+              alt="Beef choma "
+            />
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Events -->
     <section id="events-space" class="h-full w-full py-16">
       <div class="max-w-screen-xl mx-auto p-4">
-        <h2 class="font-semibold text-center mb-12 text-2xl md:text-4xl">
-          Events Space
-        </h2>
+        <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
+          <div class="md:order-2 flex flex-col justify-center prose py-12">
+            <h2 class="font-semibold mb-12 text-2xl md:text-4xl">
+              Events Space
+            </h2>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-          sint expedita incidunt iusto asperiores. Explicabo veniam, vel
-          expedita amet accusamus harum magnam cupiditate assumenda consectetur
-          ducimus, quaerat provident dolorum dicta.
-        </p>
+            <div
+              class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+            ></div>
+
+            <p class="text-lg mb-6">
+              Planning a special occasion? Bebe's Grill & Chill has the perfect
+              venue for your event. Our spacious event space can accommodate a
+              variety of functions, from weddings and conferences to birthday
+              parties and corporate gatherings. Our experienced staff will work
+              with you to ensure your event is a success.
+            </p>
+          </div>
+
+          <div class="md:order-1">
+            <img
+              class="rounded-lg mx-auto"
+              src="./img/events-space.jpeg"
+              alt="Beef choma "
+            />
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Contact -->
     <section id="contact-us" class="h-full w-full py-16">
       <div class="max-w-screen-xl mx-auto p-4">
-        <h2 class="font-semibold text-center mb-12 text-2xl md:text-4xl">
-          Contact Us
-        </h2>
+        <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
+          <div class="py-12">
+            <h2 class="font-semibold mb-12 text-2xl md:text-4xl">Contact Us</h2>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-          sint expedita incidunt iusto asperiores. Explicabo veniam, vel
-          expedita amet accusamus harum magnam cupiditate assumenda consectetur
-          ducimus, quaerat provident dolorum dicta.
-        </p>
+            <div
+              class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+            ></div>
+
+            <p class="text-lg mb-6">
+              Ready to experience the best of Bebe's Grill & Chill? Contact us
+              today to book your stay, reserve a table, or inquire about hosting
+              your event with us. We look forward to welcoming you to a world of
+              comfort, culinary delights, relaxation, and celebration.
+            </p>
+          </div>
+
+          <div>
+            <form
+              action="/contact"
+              method="POST"
+              class="w-full mx-auto"
+              x-data="contactForm()"
+              @submit.prevent="submitData"
+            >
+              <div class="mb-4">
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  for="name"
+                  >Name:</label
+                >
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Full name"
+                  required
+                  x-model="formData.name"
+                />
+              </div>
+
+              <div class="mb-4">
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  for="email"
+                  >E-mail:</label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="name@company.com"
+                  required
+                  x-model="formData.email"
+                />
+              </div>
+
+              <div class="mb-4">
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  for="message"
+                  >Message:</label
+                >
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="6"
+                  class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Write your message here..."
+                  required
+                  x-model="formData.message"
+                ></textarea>
+              </div>
+
+              <button
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                x-text="buttonLabel"
+                :disabled="loading"
+              ></button>
+
+              <p x-text="message"></p>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -287,5 +463,43 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      function contactForm() {
+        return {
+          formData: {
+            name: "",
+            email: "",
+            message: "",
+          },
+          message: "",
+
+          loading: false,
+          buttonLabel: "Send Message",
+
+          submitData() {
+            this.buttonLabel = "Submitting...";
+            this.loading = true;
+            this.message = "";
+
+            fetch("/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(this.formData),
+            })
+              .then(() => {
+                this.message = "Form sucessfully submitted!";
+              })
+              .catch(() => {
+                this.message = "Ooops! Something went wrong!";
+              })
+              .finally(() => {
+                this.loading = false;
+                this.buttonLabel = "Send Message";
+              });
+          },
+        };
+      }
+    </script>
   </body>
 </html>

@@ -63,6 +63,14 @@
       [x-cloak] {
         display: none !important;
       }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Sora", sans-serif;
+      }
       button:disabled {
         cursor: not-allowed;
         opacity: 0.5;
@@ -126,6 +134,7 @@
         <div
           x-show="open"
           x-collapse
+          x-cloak
           @click.outside="toggle"
           class="items-center justify-between w-full md:!flex md:!w-auto md:!h-full md:order-1 md:mr-auto md:ml-12"
           id="navbar-sticky"

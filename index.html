@@ -93,7 +93,7 @@
     </style>
   </head>
 
-  <body class="divide-y relative">
+  <body class="relative bg-white dark:bg-gray-900">
     <header class="sticky top-0 z-50">
       <nav
         x-data="{ open: false, toggle(){this.open = !this.open;} }"
@@ -104,13 +104,13 @@
           <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img class="w-[50px] h-auto" src="./img/logo.png" alt="Logo" />
             <span
-              class="self-center hidden sm:flex text-2xl font-semibold whitespace-nowrap dark:text-white"
+              class="self-center hidden lg:flex text-2xl font-semibold whitespace-nowrap dark:text-white"
               >Bebe's Grill & Chill</span
             >
           </a>
 
           <div
-            class="flex ml-auto md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
+            class="flex items-center ml-auto md:order-2 space-x-4 md:space-x-0 rtl:space-x-reverse"
           >
             <a
               href="#contact-us"
@@ -186,24 +186,24 @@
       </nav>
     </header>
 
-    <main class="">
+    <main class="relative -top-1">
       <section
-        class="relative bg-center bg-no-repeat bg-[url('/img/mishikaki.jpg')] bg-gray-700 bg-blend-multiply -top-2"
+        class="bg-center bg-no-repeat bg-[url('/img/mishikaki.jpg')] bg-gray-700 bg-blend-multiply"
       >
         <div
-          class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56 prose"
+          class="px-4 mx-auto max-w-screen-xl text-center py-32 lg:py-56 prose"
         >
           <h1
-            class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl"
+            class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white"
           >
             Your go-to destination for fun
           </h1>
           <p
             class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48"
           >
-            We offer a a delightful blend of accommodation, dining, lounging,
-            and event experiences, all designed to provide you with a relaxing
-            and enjoyable escape.
+            We offer a delightful blend of accommodation, dining, lounging, and
+            event experiences, all designed to provide you with a relaxing and
+            enjoyable escape.
           </p>
 
           <div
@@ -240,39 +240,41 @@
         </div>
       </section>
 
-      <section id="services">
+      <section id="services" class="divide-y dark:divide-gray-800">
         <!-- Restaurant -->
         <article id="restaurant" class="h-full w-full py-16">
           <div class="max-w-screen-xl mx-auto p-4">
             <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
               <div class="flex flex-col justify-center prose py-12">
-                <h2 class="font-semibold mb-12 text-2xl md:text-4xl">
+                <h2
+                  class="font-semibold mb-12 text-2xl md:text-4xl dark:text-white"
+                >
                   Restaurant
                 </h2>
 
                 <div
-                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-600 mb-12"
                 ></div>
 
-                <p class="text-lg mb-6">
+                <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
                   Treat your taste buds to mouthwatering dishes prepared with
                   fresh, locally-sourced ingredients. From breakfast to dinner,
                   our menu features a diverse selection of cuisine, as well as
                   signature specialties to satisfy every palate.
                 </p>
 
-                <p class="text-lg mb-6">
+                <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
                   Whether you're in the mood for a light snack or a hearty meal,
                   we have something for everyone. Join us for a dining
                   experience that combines taste, ambiance, and exceptional
                   service.
                 </p>
               </div>
-              <div class="">
+              <div class="flex items-center">
                 <img
                   class="rounded-lg mx-auto"
                   src="./img/ugali-beef-choma.jpg"
-                  alt="Beef choma & Ugali"
+                  alt="Beef Choma & Ugali"
                 />
               </div>
             </div>
@@ -284,13 +286,17 @@
           <div class="max-w-screen-xl mx-auto p-4">
             <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
               <div class="md:order-2 flex flex-col justify-center prose py-12">
-                <h2 class="font-semibold mb-12 text-2xl md:text-4xl">Lounge</h2>
+                <h2
+                  class="font-semibold mb-12 text-2xl md:text-4xl dark:text-white"
+                >
+                  Lounge
+                </h2>
 
                 <div
-                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-600 mb-12"
                 ></div>
 
-                <p class="text-lg mb-6">
+                <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
                   Unwind and socialize in our chic lounge area. Whether you're
                   meeting friends for drinks or seeking a cozy spot to relax,
                   our lounge provides the perfect atmosphere. Indulge in
@@ -299,7 +305,7 @@
                   defines Bebe's Grill & Chill.
                 </p>
               </div>
-              <div class="md:order-1">
+              <div class="flex items-center md:order-1">
                 <img
                   class="rounded-lg mx-auto"
                   src="./img/lounge.jpg"
@@ -315,28 +321,30 @@
           <div class="max-w-screen-xl mx-auto p-4">
             <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
               <div class="flex flex-col justify-center prose py-12">
-                <h2 class="font-semibold mb-12 text-2xl md:text-4xl">
+                <h2
+                  class="font-semibold mb-12 text-2xl md:text-4xl dark:text-white"
+                >
                   Accommodation
                 </h2>
 
                 <div
-                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-600 mb-12"
                 ></div>
 
-                <p class="text-lg mb-6">
+                <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
                   Indulge in comfort and style with our exceptional
                   accommodation options. Whether you're here for a weekend
                   getaway or an extended stay, our well-appointed rooms are
                   designed to provide a relaxing retreat.
                 </p>
 
-                <p class="text-lg mb-6">
+                <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
                   Enjoy modern amenities, personalized service, and a
                   home-away-from-home atmosphere that sets Bebe's Grill & Chill
                   apart.
                 </p>
               </div>
-              <div class="">
+              <div class="flex items-center">
                 <img
                   class="rounded-lg mx-auto"
                   src="./img/accommodation.jpg"
@@ -352,15 +360,17 @@
           <div class="max-w-screen-xl mx-auto p-4">
             <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
               <div class="md:order-2 flex flex-col justify-center prose py-12">
-                <h2 class="font-semibold mb-12 text-2xl md:text-4xl">
+                <h2
+                  class="font-semibold mb-12 text-2xl md:text-4xl dark:text-white"
+                >
                   Events Space
                 </h2>
 
                 <div
-                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-600 mb-12"
                 ></div>
 
-                <p class="text-lg mb-6">
+                <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
                   Planning a special occasion? Bebe's Grill & Chill has the
                   perfect venue for your event. Our spacious event space can
                   accommodate a variety of functions, from weddings and
@@ -370,7 +380,7 @@
                 </p>
               </div>
 
-              <div class="md:order-1">
+              <div class="flex items-center md:order-1">
                 <img
                   class="rounded-lg mx-auto"
                   src="./img/events-space.jpg"
@@ -386,15 +396,17 @@
           <div class="max-w-screen-xl mx-auto p-4">
             <div class="grid w-full gap-6 md:gap-12 md:grid-cols-2">
               <div class="py-12">
-                <h2 class="font-semibold mb-12 text-2xl md:text-4xl">
+                <h2
+                  class="font-semibold mb-12 text-2xl md:text-4xl dark:text-white"
+                >
                   Contact Us
                 </h2>
 
                 <div
-                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-200 mb-12"
+                  class="w-[5rem] h-1.5 bg-gray-800 rounded dark:bg-gray-600 mb-12"
                 ></div>
 
-                <p class="text-lg mb-6">
+                <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
                   Ready to experience the best of Bebe's Grill & Chill? Contact
                   us today to book your stay, reserve a table, or inquire about
                   hosting your event with us. We look forward to welcoming you
@@ -430,6 +442,12 @@
                     x-model="formData.botcheck"
                     id=""
                     style="display: none"
+                  />
+
+                  <input
+                    type="hidden"
+                    name="from_name"
+                    value="Website Contact Form"
                   />
 
                   <div class="mb-4">
@@ -489,7 +507,7 @@
                     :disabled="loading"
                   ></button>
 
-                  <p x-text="message" class="mt-4"></p>
+                  <p x-text="message" class="mt-4 dark:text-gray-400"></p>
                 </form>
               </div>
             </div>
@@ -498,10 +516,10 @@
       </section>
     </main>
 
-    <footer id="footer" class="pt-12 pb-6 bg-gray-300 dark:bg-gray-800">
+    <footer id="footer" class="py-12 bg-gray-300 dark:bg-gray-800">
       <div class="max-w-screen-xl p-4 mx-auto">
         <div
-          class="flex flex-col md:flex-row items-center justify-center md:justify-between space-y-4 md:space-y-0"
+          class="flex flex-col md:flex-row items-center justify-center md:justify-between space-y-4 md:space-y-0 text-gray-500 dark:text-gray-300"
         >
           <!-- Social links -->
           <ul class="flex space-x-8 md:ml-auto md:order-2">
@@ -534,13 +552,15 @@
       </div>
 
       <!-- Dark Mode Switch -->
-      <div class="fixed bottom-2.5 right-2.5">
+      <div
+        class="fixed bottom-2 -right-24 hover:right-0 transition-all ease-out"
+      >
         <button
           id="theme-toggle"
           type="button"
-          class="flex items-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-full text-sm p-2.5 shadow-lg"
+          class="flex items-center border border-gray-300 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-tl-full rounded-bl-full text-sm p-2.5 transition"
         >
-          <span class="inline-flex mr-2">
+          <span class="inline-flex">
             <svg
               id="theme-toggle-dark-icon"
               class="hidden w-5 h-5"
@@ -567,7 +587,9 @@
             </svg>
           </span>
 
-          <span id="them-text" class="inline-flex pr-2">Switch theme</span>
+          <span id="theme-text" class="inline-flex pr-2 ml-3"
+            >Switch theme</span
+          >
         </button>
       </div>
     </footer>
@@ -580,11 +602,11 @@
             email: "",
             message: "",
             botcheck: "",
-            subject: "New Submission from Web3Forms",
+            subject: "New Message from Website Visitor",
             access_key: "8215334a-bf7a-458e-b4a8-66f6514eedf2",
           },
-          message: "",
 
+          message: "",
           loading: false,
           buttonLabel: "Send Message",
 
@@ -631,7 +653,7 @@
       var themeToggleLightIcon = document.getElementById(
         "theme-toggle-light-icon"
       );
-      var themeDescriptionText = document.getElementById("them-text");
+      var themeDescriptionText = document.getElementById("theme-text");
 
       // Change the icons inside the button based on previous settings
       if (
@@ -679,5 +701,8 @@
         }
       });
     </script>
+
+    <!-- hCaptcha -->
+    <script src="https://web3forms.com/client/script.js" async defer></script>
   </body>
 </html>

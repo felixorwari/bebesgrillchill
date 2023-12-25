@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bebesgrillchill.co.ke/sitemap.xml
